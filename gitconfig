@@ -7,6 +7,6 @@
 	excludesfile = ~/.git-ignore-global
 
 [alias]
-    ac = !git add -A && git commit
+  ac = !git add -A && git commit
 	psom = push origin master
 	plo = pull origin

@@ -31,6 +31,7 @@ alias subl='/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl'
 alias serve='python -m SimpleHTTPServer'
 alias sserve='twistd -n web -p 8887 --path .'
 
+alias vgs='vagrant global-status'
 
 function rm () {
   local path
@@ -54,3 +55,7 @@ GIT_PS1_SHOWUNTRACKEDFILES=true
 source $DOTFILESDIR/git-completion.sh
 # https://raw.github.com/git/git/master/contrib/completion/git-prompt.sh
 source $DOTFILESDIR/git-prompt.sh
+
+# load atlas specific stuff
+source $DOTFILESDIR/atlas
+
