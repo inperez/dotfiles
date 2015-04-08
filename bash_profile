@@ -28,6 +28,7 @@ eval "$(gulp --completion=bash)"
 alias gs="git status -s"
 
 git config --global alias.ca 'commit -am'
+git config --global push.default current
 
 export CLICOLOR=1
 export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
