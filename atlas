@@ -9,3 +9,16 @@ alias workerprod="ssh -i ~/.ssh/atlas/atlas_production_keypair.pem ubuntu@54.164
 alias workerbeta="ssh -i ~/.ssh/atlas/atlas_production_keypair.pem ubuntu@54.173.233.166"
 
 alias atlasdocs="open https://github.com/oreillymedia/orm-atlas-cookbooks/tree/master/docs"
+
+function arun () {
+	cd ~/Atlas/orm-atlas-cookbooks/$1
+	vagrant up
+	vagrant ssh
+	cd /vagrant
+	if $1 -eq 'atlas'; then
+		foreman start -f Procfile.dev
+	else
+		foreman start
+	fi
+}	
+	
