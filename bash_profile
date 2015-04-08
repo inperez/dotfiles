@@ -24,19 +24,22 @@ source $(brew --prefix nvm)/nvm.sh  # Add NVM to PATH for scripting
 eval "$(gulp --completion=bash)"
 
 # GIT
+
+alias gs="git status -s"
+
+git config --global alias.ca 'commit -am'
+
 export CLICOLOR=1
 export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
 
+# some options for prompt
 # PS1="\n\e[0;33m\w\e[m\n\u@\h  sez:\n"
 # PS1='[\u@\h \W$(__git_ps1 " (%s)")]\$ '
 # PS1='\n\e[0;33m\w\e[m\n\u@\h $(__git_ps1 "(on \e[0;35m\]%s\[\e[0m\])"):\n'
 PS1='\n\e[0;33m\w\e[m $(__git_ps1 "(on \e[0;35m\]%s\[\e[0m\])"):\n'
 
-
 git config --global color.ui true
-alias gitlg="git log --pretty=format:'%C(yellow)%h%Cred%d%Creset - %C(cyan)%an %Creset: %s %Cgreen(%cr)'"
-
-alias s="git status -s"
+alias gl="git log --pretty=format:'%C(yellow)%h%Cred%d%Creset - %C(cyan)%an %Creset: %s %Cgreen(%cr)'"
 
 GIT_PS1_SHOWDIRTYSTATE=true
 GIT_PS1_SHOWUNTRACKEDFILES=true
@@ -44,7 +47,7 @@ GIT_PS1_SHOWUNTRACKEDFILES=true
 # from https://github.com/git/git/tree/master/contrib/completion
 source $DOTFILESDIR/git-completion.sh
 
-# https://raw.github.com/git/git/master/contrib/completion/git-prompt.sh
+# from https://raw.github.com/git/git/master/contrib/completion/git-prompt.sh
 source $DOTFILESDIR/git-prompt.sh
 
 # VAGRANT
@@ -55,7 +58,6 @@ alias serve='python -m SimpleHTTPServer'
 alias sserve='twistd -n web -p 8887 --path .'
 
 # GENERAL
-
 alias ls='ls -F'
 alias ll='ls -l -h'
 alias la='ls -a'
