@@ -15,6 +15,7 @@ export PATH="$PATH:$GOPATH/bin" # add executable
 # RUBY
 [[ -s "$HOME/.profile" ]] && source "$HOME/.profile" # Load the default .profile
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+export PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
 # NODE
 export NVM_DIR=~/.nvm
@@ -30,7 +31,7 @@ export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
 # PS1="\n\e[0;33m\w\e[m\n\u@\h  sez:\n"
 # PS1='[\u@\h \W$(__git_ps1 " (%s)")]\$ '
 # PS1='\n\e[0;33m\w\e[m\n\u@\h $(__git_ps1 "(on \e[0;35m\]%s\[\e[0m\])"):\n'
-PS1='\n\e[0;33m\w\e[m $(__git_ps1 "(on \e[0;35m\]%s\[\e[0m\])"):\n'
+PS1='\n\e[0;34m\w/\e[m $(__git_ps1 "(on \e[0;91m\]%s\[\e[0m\])"):\n'
 
 
 git config --global color.ui true
@@ -47,6 +48,9 @@ source $DOTFILESDIR/git-completion.sh
 # https://raw.github.com/git/git/master/contrib/completion/git-prompt.sh
 source $DOTFILESDIR/git-prompt.sh
 
+### HEROKU
+export PATH="/usr/local/heroku/bin:$PATH"
+
 # VAGRANT
 alias vgs='vagrant global-status'
 
@@ -59,7 +63,7 @@ alias sserve='twistd -n web -p 8887 --path .'
 alias ls='ls -F'
 alias ll='ls -l -h'
 alias la='ls -a'
-alias subl='/Applications/Sublime\ Text\ 2.app/Contents/SharedSupport/bin/subl'
+alias subl='/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl'
 
 if ! grep -Fxq "set completion-ignore-case On" ~/.inputrc; then
   echo "set completion-ignore-case On" >> ~/.inputrc

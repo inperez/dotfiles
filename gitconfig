@@ -1,12 +1,26 @@
+[user]
+  name = Martin Bravo
+  email = bravomartin@gmail.com
+
+[github]
+  user = bravomartin
+  token = 01674f45823b028007618b2c6525412b
+
+[core]
+  excludesfile = ~/.git-ignore-global
+  autocrlf = input
+
 [color]
 	ui = true
-[user]
-	email = bravomartin@gmail.com
-	name = Martin Bravo
-[core]
-	excludesfile = ~/.git-ignore-global
 
 [alias]
   ac = !git add -A && git commit
-	psom = push origin master
-	plo = pull origin
+  psom = push origin master
+  plo = pull origin
+
+[difftool "sourcetree"]
+  cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+  path = 
+[mergetool "sourcetree"]
+  cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+  trustExitCode = true
