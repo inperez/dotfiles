@@ -58,6 +58,30 @@ alias vgs='vagrant global-status'
 alias serve='python -m SimpleHTTPServer'
 alias sserve='twistd -n web -p 8887 --path .'
 
+# HELPERS
+# usage `fpp 4000`
+
+function killport(){
+  if [[ $# -eq 0 ]] ; then
+    echo 'Kill Process on Port Number'
+    echo '---'
+    echo 'Specify a port to to kill processes. i.e. `killport 4000`'
+    return
+  fi
+  lsof -t -i :$1
+  kill $(lsof -t -i :$1)
+
+}
+
+function openport (){
+  open http://localhost:$1
+}
+
+# OREILLY
+export GOREILLY="src/github.com/oreillymedia"
+alias goreilly="cd $GOPATH/$GOREILLY"
+
+
 # GENERAL
 alias ls='ls -F'
 alias ll='ls -l -h'
