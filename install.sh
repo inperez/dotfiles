@@ -10,9 +10,9 @@
 
 ########## Variables
 
-dir=~/.dotfiles                    # dotfiles directory
+dir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd ) # this directory
 olddir=~/dotfiles_old             # old dotfiles backup directory
-files="bash_profile gitconfig vimrc git-ignore-global"    # list of files/folders to symlink in homedir
+files="gitconfig vimrc git-ignore-global"    # list of files/folders to symlink in homedir
 
 ##########
 
@@ -29,10 +29,15 @@ echo "...done"
 # move any existing dotfiles in homedir to dotfiles_old directory, then create symlinks
 for file in $files; do
     echo "Moving any existing dotfiles from ~ to $olddir"
-    mv ~/.$file ~/dotfiles_old/
+    mv ~/.$file $olddir
     echo "Creating symlink to $file in home directory."
     ln -s $dir/$file ~/.$file
 done
+
+echo "linking bash_profile in home directory."
+if ! grep -Fxq $dir ~/.bash_profile; then
+  echo "source $dir/bash_profile" >> ~/.bash_profile
+fi
 
 # echo "installing pathogen (for vim)"
 # mkdir -p ~/.vim/autoload ~/.vim/bundle; \
