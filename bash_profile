@@ -83,7 +83,9 @@ function openport (){
 
 # OREILLY
 export GOREILLY="src/github.com/oreillymedia"
-alias goreilly="cd $GOPATH/$GOREILLY"
+function goreilly () {
+ cd $GOPATH/$GOREILLY/$1
+}
 
 
 # GENERAL
