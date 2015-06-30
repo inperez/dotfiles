@@ -17,6 +17,13 @@ export PATH="$PATH:$GOPATH/bin" # add executable
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 export PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
+export RBENV_ROOT=/usr/local/var/rbenv
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+
+# POSTGRES
+export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/9.4/bin
+
+
 # NODE
 export NVM_DIR=~/.nvm
 source $(brew --prefix nvm)/nvm.sh  # Add NVM to PATH for scripting
@@ -63,11 +70,15 @@ alias serve='python -m SimpleHTTPServer'
 alias sserve='twistd -n web -p 8887 --path .'
 
 # HELPERS
-# usage `fpp 4000`
 
-function killport(){
+# Open new tab
+source $DOTFILESDIR/tab.bash
+
+
+# usage `killp 4000`
+function killp(){
   if [[ $# -eq 0 ]] ; then
-    echo 'Kill Process on Port Number'
+    echo 'Kill Process on Port'
     echo '---'
     echo 'Specify a port to to kill processes. i.e. `killport 4000`'
     return
@@ -77,16 +88,28 @@ function killport(){
 
 }
 
-function openport (){
+function openp (){
   open http://localhost:$1
 }
+
+
 
 # OREILLY
 export GOREILLY="src/github.com/oreillymedia"
 function goreilly () {
- cd $GOPATH/$GOREILLY/$1
+  if [[ $1 = "s" ]]; then
+    cd $GOPATH/$GOREILLY/styleguide
+    gulp server
+  elif [[ $1 = "p" ]]; then
+    cd $GOPATH/$GOREILLY/prototype-server
+  elif [[ $1 = "a" ]]; then
+    cd $GOPATH/$GOREILLY/prototype-api
+  else
+    cd $GOPATH/$GOREILLY/styleguide
+    tab $GOPATH/$GOREILLY/prototype-server 'gulp server'
+    tab $GOPATH/$GOREILLY/prototype-api gin
+  fi
 }
-
 
 # GENERAL
 alias ls='ls -F'
