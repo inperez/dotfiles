@@ -12,6 +12,9 @@
 
 [color]
 	ui = true
+  interactive = always
+[color "interactive"]
+  error = red bold
 
 [alias]
   ac = !git add -A && git commit

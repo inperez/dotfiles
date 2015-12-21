@@ -1,6 +1,6 @@
 # DOTFILESDIR SHOULD BE DEFINED FOR THIS TO RUN PROPERLY
 DOTFILESDIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
-
+export PATH="/usr/local/sbin:$PATH"
 export PATH="/usr/local/bin:$PATH"
 export PATH="$PATH:~/bin" # Add bin
 export PATH="$DOTFILESDIR:$PATH" # add this folder
@@ -11,6 +11,9 @@ source $DOTFILESDIR/atlas
 # GO
 export GOPATH="$HOME/WORK/gocode" # add the gopath var
 export PATH="$PATH:$GOPATH/bin" # add executable
+
+#php
+export PATH="$(brew --prefix homebrew/php/php56)/bin:$PATH"
 
 # RUBY
 [[ -s "$HOME/.profile" ]] && source "$HOME/.profile" # Load the default .profile
@@ -37,6 +40,7 @@ alias gs="git status -s"
 
 git config --global alias.ca 'commit -am'
 git config --global push.default current
+git config --global alias.undo 'reset --soft HEAD^'
 
 export CLICOLOR=1
 export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
@@ -97,17 +101,19 @@ function openp (){
 # OREILLY
 export GOREILLY="src/github.com/oreillymedia"
 function goreilly () {
-  if [[ $1 = "s" ]]; then
+  if [[ $1 = "styleguide" ]]; then
     cd $GOPATH/$GOREILLY/styleguide
     gulp server
-  elif [[ $1 = "p" ]]; then
+  elif [[ $1 = "server" ]]; then
     cd $GOPATH/$GOREILLY/prototype-server
-  elif [[ $1 = "a" ]]; then
+  elif [[ $1 = "api" ]]; then
     cd $GOPATH/$GOREILLY/prototype-api
-  else
+  elif [[ $1 = "beta" ]]; then
     cd $GOPATH/$GOREILLY/styleguide
     tab $GOPATH/$GOREILLY/prototype-server 'gulp server'
     tab $GOPATH/$GOREILLY/prototype-api gin
+  else
+    cd $GOPATH/$GOREILLY/$1
   fi
 }
 
