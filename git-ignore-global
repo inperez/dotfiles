@@ -2,8 +2,12 @@
 .svn
 .hg
  
-# OS generated files #
-######################
+# Mac OS
+.DS_Store
+ 
+# Python
+*.pyc
+ 
 .DS_Store
 .DS_Store?
 ._*
@@ -11,3 +15,7 @@
 .Trashes
 ehthumbs.db
 Thumbs.db
+
+# JS Pagkages
+node_modules
+jspm_packages
