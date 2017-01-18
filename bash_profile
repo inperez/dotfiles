@@ -25,11 +25,17 @@ export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/9.4/bin
 
 
 # NODE
-export NVM_DIR=~/.nvm
-source $(brew --prefix nvm)/nvm.sh  # Add NVM to PATH for scripting
+
+export NVM_DIR="$HOME/.nvm"
+. "/usr/local/opt/nvm/nvm.sh"
+export PATH="$PATH:node_modules/.bin" # add local nodes to executable
 
 # GULP
 eval "$(gulp --completion=bash)"
+
+# PHP / COMPOSER
+
+export PATH="$PATH:~/.composer/vendor/bin" # add composer to executable
 
 # GIT
 
@@ -50,6 +56,8 @@ PS1='\n\e[0;34m\w/\e[m $(__git_ps1 "(on \e[0;91m\]%s\[\e[0m\])"):\n'
 git config --global color.ui true
 alias gl="git log --pretty=format:'%C(yellow)%h%Cred%d%Creset - %C(cyan)%an %Creset: %s %Cgreen(%cr)'"
 
+alias git_cleanup_remote="git branch -r --merged master |grep origin | grep -v '>' | grep -v master | awk '{split($0,a,"/"); print a[2]}'| xargs git push origin --delete"
+
 GIT_PS1_SHOWDIRTYSTATE=true
 GIT_PS1_SHOWUNTRACKEDFILES=true
 
@@ -67,7 +75,7 @@ alias vgs='vagrant global-status'
 
 # SIMPLE SERVERS
 alias serve='python -m SimpleHTTPServer'
-alias sserve='twistd -n web -p 8887 --path .'
+alias pserve='php -S localhost:9001'
 
 # HELPERS
 
@@ -83,9 +91,12 @@ function killp(){
     echo 'Specify a port to to kill processes. i.e. `killport 4000`'
     return
   fi
-  lsof -t -i :$1
+  if [ -z $(lsof -t -i :$1) ]; then 
+    echo "no process running on port" $1 
+    return
+  fi
+  echo "Killing process running On port" $1 
   kill $(lsof -t -i :$1)
-
 }
 
 function openp (){
