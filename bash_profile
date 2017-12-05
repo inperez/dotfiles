@@ -14,12 +14,12 @@ export PATH=$PATH:/usr/local/opt/go/libexec/bin # add the gopath var
 export PATH="$PATH:$GOPATH/bin" # add executable
 
 # Kubernetes kubectl
-source <(kubectl completion bash)
+# source <(kubectl completion bash)
 
 #PYTHON
 alias python='python3'
 alias pip='pip3'
-source /usr/local/bin/virtualenvwrapper.sh
+# source /usr/local/bin/virtualenvwrapper.sh
 
 # RUBY
 [[ -s "$HOME/.profile" ]] && source "$HOME/.profile" # Load the default .profile
@@ -84,7 +84,7 @@ source $DOTFILESDIR/git-prompt.sh
 alias vgs='vagrant global-status'
 
 # SIMPLE SERVERS
-alias serve='python -m SimpleHTTPServer'
+alias serve='python -m http.server 8000 --bind localhost'
 alias pserve='php -S localhost:9001'
 
 # HELPERS
@@ -113,31 +113,10 @@ function openp (){
 }
 
 
-
-# OREILLY
-export GOREILLY="src/github.com/oreillymedia"
-function goreilly () {
-  if [[ $1 = "styleguide" ]]; then
-    cd $GOPATH/$GOREILLY/styleguide
-    gulp server
-  elif [[ $1 = "server" ]]; then
-    cd $GOPATH/$GOREILLY/prototype-server
-  elif [[ $1 = "api" ]]; then
-    cd $GOPATH/$GOREILLY/prototype-api
-  elif [[ $1 = "beta" ]]; then
-    cd $GOPATH/$GOREILLY/styleguide
-    tab $GOPATH/$GOREILLY/prototype-server 'gulp server'
-    tab $GOPATH/$GOREILLY/prototype-api gin
-  else
-    cd $GOPATH/$GOREILLY/$1
-  fi
-}
-
 # GENERAL
 alias ls='ls -F'
 alias ll='ls -l -h'
 alias la='ls -a'
-alias subl='/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl'
 
 if ! grep -Fxq "set completion-ignore-case On" ~/.inputrc; then
   echo "set completion-ignore-case On" >> ~/.inputrc
