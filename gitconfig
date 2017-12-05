@@ -1,10 +1,10 @@
 [user]
-  name = Martin Bravo
-  email = bravomartin@gmail.com
+  name = Ignacio Perez
+  email = ign.perezs@gmail.com
 
 [github]
-  user = bravomartin
-  token = 01674f45823b028007618b2c6525412b
+  user = inperez
+  token =
 
 [core]
   excludesfile = ~/.git-ignore-global
