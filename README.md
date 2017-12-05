@@ -1,6 +1,6 @@
 # Dotfiles
 
-Forked from @zischwartz, who probably forked it from somewhere else.
+Forked from @bravomartin, who forked it from @zischwartz, who probably forked it from somewhere else.
 
 ##Installation
 
