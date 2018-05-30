@@ -85,7 +85,7 @@ alias vgs='vagrant global-status'
 
 # SIMPLE SERVERS
 alias serve='python -m http.server 8000 --bind localhost'
-alias pserve='php -S 0.0.0.0:9001'
+alias pserve='php -S ranger.local:8000'
 
 # HELPERS
 
