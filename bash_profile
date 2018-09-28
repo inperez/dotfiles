@@ -84,7 +84,8 @@ source $DOTFILESDIR/git-prompt.sh
 alias vgs='vagrant global-status'
 
 # SIMPLE SERVERS
-alias serve='python -m http.server 8000 --bind localhost'
+# alias serve='python -m http.server 8000 --bind localhost'
+alias serve='http-server'
 alias pserve='php -S localhost:8000'
 
 # HELPERS
