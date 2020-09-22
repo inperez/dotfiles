@@ -84,11 +84,11 @@ source $DOTFILESDIR/git-prompt.sh
 alias vgs='vagrant global-status'
 
 # SIMPLE SERVERS
-alias pyserve='python -m http.server 8000 --bind localhost'
-alias serve='python -m http.server 8000 --bind localhost'
+alias pyserve='python -m http.server 8000 --bind localhost | openp 8000'
+alias serve='python -m http.server 8000 --bind localhost | openp 8000'
 # alias serve='http-server'
-alias phpserve='php -S localhost:8000'
-alias kirbyserve='php -S localhost:8888 kirby/router.php'
+alias phpserve='php -S localhost:8000 | openp 8000'
+alias kirbyserve='php -S localhost:8888 kirby/router.php | openp 8888'
 
 # HELPERS
 
