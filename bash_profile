@@ -43,7 +43,7 @@ export PATH="$PATH:node_modules/.bin" # add local nodes to executable
 eval "$(gulp --completion=bash)"
 
 # PHP / COMPOSER
-export PATH="$(brew --prefix php@5.6)/bin:$PATH"
+# export PATH="$(brew --prefix php@7.1)/bin:$PATH"
 export PATH="$PATH:~/.composer/vendor/bin" # add composer to executable
 
 # Convert TTF/OTF font to @font-face font stack
@@ -85,8 +85,10 @@ alias vgs='vagrant global-status'
 
 # SIMPLE SERVERS
 alias pyserve='python -m http.server 8000 --bind localhost'
-alias serve='http-server'
-alias pserve='php -S localhost:8000'
+alias serve='python -m http.server 8000 --bind localhost'
+# alias serve='http-server'
+alias phpserve='php -S localhost:8000'
+alias kirbyserve='php -S localhost:8888 kirby/router.php'
 
 # HELPERS
 
